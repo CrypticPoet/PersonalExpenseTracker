@@ -8,15 +8,6 @@ class TransactionDetail extends StatelessWidget {
   final int index;
   final Function handler;
 
-  double fontSize(int amount) {
-    if (amount > 9999)
-      return 10;
-    else if (amount > 999)
-      return 14;
-    else
-      return 16;
-  }
-
   TransactionDetail({this.title, this.amount, this.date, this.index, this.handler});
 
   @override
@@ -27,17 +18,15 @@ class TransactionDetail extends StatelessWidget {
         children: <Widget>[
           Container(
             width: 60,
+            alignment: Alignment.center,
             height: 60,
             decoration: kCircleBoxDecoration,
             margin: EdgeInsets.only(right: 15),
-            child: Center(
+            padding: EdgeInsets.all(2),
+            child: FittedBox(
               child: Text(
                 '₹$amount',
-                style: TextStyle(
-                  fontSize: fontSize(int.parse(amount)),
-                  color: kTextColor,
-                  fontWeight: FontWeight.w800,
-                ),
+                style: kTextStyle.copyWith(fontSize: 16),
               ),
             ),
           ),

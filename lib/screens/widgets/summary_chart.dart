@@ -61,40 +61,43 @@ class SummaryChart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           for (var i = 1; i < 8; i++)
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  width: 45,
-                  child: Text(
-                    '₹${sumTransactions(recentTransactions.where((tx) => tx.date.weekday == i).toList())}',
-                    style: kSecTextSyle.copyWith(color: Colors.white),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Expanded(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      Container(
-                        height: double.maxFinite,
-                        width: pillWidth,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(color: kPrimaryBorderColor.withOpacity(.3), width: 2)),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    height: 17,
+                    child: FittedBox(
+                      child: Text(
+                        '₹${sumTransactions(recentTransactions.where((tx) => tx.date.weekday == i).toList())}',
+                        style: kSecTextSyle.copyWith(color: Colors.white),
                       ),
-                      expensePill(sum, pillWidth)
-                    ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  weekdayList[i],
-                  style: kSecTextSyle.copyWith(color: Colors.white, letterSpacing: 1.5),
-                ),
-              ],
+                  SizedBox(height: 10),
+                  Expanded(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: double.maxFinite,
+                          width: pillWidth,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              border: Border.all(color: kPrimaryBorderColor.withOpacity(.3), width: 2)),
+                        ),
+                        expensePill(sum, pillWidth)
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    weekdayList[i],
+                    style: kSecTextSyle.copyWith(color: Colors.white, letterSpacing: 1.5),
+                  ),
+                ],
+              ),
             )
         ],
       ),
