@@ -3,7 +3,7 @@ import 'package:learning_flutter/constants.dart';
 
 class TransactionDetail extends StatelessWidget {
   final String title;
-  final String amount;
+  final int amount;
   final String date;
   final int index;
   final Function handler;
@@ -41,7 +41,7 @@ class TransactionDetail extends StatelessWidget {
                     title,
                     style: kTextStyle,
                   )),
-              Text('Date : $date', style: kSecTextSyle.copyWith(color: kTextSecColor), maxLines: 1),
+              Text('$date', style: kSecTextSyle.copyWith(color: kTextSecColor), maxLines: 1),
             ],
           ),
           Spacer(),

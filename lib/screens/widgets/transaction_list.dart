@@ -13,17 +13,16 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: transactions
-          .map(
-            (tx) => TransactionDetail(
-              title: tx.title,
-              amount: tx.amount.toString(),
-              date: DateFormat.yMMMEd().format(tx.date).toString(),
-              index: transactions.indexOf(tx),
-              handler: deleteHandler,
-            ),
-          )
-          .toList(),
+      children: [
+        for (var i = 0; i < transactions.length; i++)
+          TransactionDetail(
+            title: transactions[i].title,
+            amount: transactions[i].amount,
+            date: DateFormat.yMMMEd().format(transactions[i].date),
+            index: i,
+            handler: deleteHandler,
+          ),
+      ],
     );
   }
 }

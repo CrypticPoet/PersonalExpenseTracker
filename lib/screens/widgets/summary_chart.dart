@@ -71,7 +71,7 @@ class SummaryChart extends StatelessWidget {
                     child: FittedBox(
                       child: Text(
                         '₹${sumTransactions(recentTransactions.where((tx) => tx.date.weekday == i).toList())}',
-                        style: kSecTextSyle.copyWith(color: Colors.white),
+                        style: kTextStyle,
                       ),
                     ),
                   ),
